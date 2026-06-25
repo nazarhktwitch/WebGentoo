@@ -2,7 +2,7 @@ const query = new URLSearchParams(globalThis.location.search);
 
 const releaseImageUrl =
   "https://github.com/nazarhktwitch/WebGentoo/releases/download/gentoo-v1/gentoo-i686.img.zst";
-const releaseImageSize = 0;
+const releaseImageSize = 493697606;
 
 function readNumber(name, fallback) {
   const value = query.get(name) || globalThis[name];
