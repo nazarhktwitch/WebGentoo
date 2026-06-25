@@ -1,8 +1,8 @@
 const query = new URLSearchParams(globalThis.location.search);
 
 const releaseImageUrl =
-  "https://huggingface.co/datasets/NazarHK/WebGentooImage/resolve/main/gentoo-i686.img.zst";
-const releaseImageSize = 493697606;
+  "https://huggingface.co/datasets/NazarHK/WebGentooImage/resolve/main/gentoo-i686.img";
+const releaseImageSize = 12884901888;
 
 function readNumber(name, fallback) {
   const value = query.get(name) || globalThis[name];
