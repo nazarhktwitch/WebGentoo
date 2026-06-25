@@ -5,7 +5,7 @@
 [![v86](https://img.shields.io/badge/v86-0.5.379-5eb7b7)](https://github.com/copy/v86)
 [![xterm.js](https://img.shields.io/badge/xterm.js-6.0.0-9ed072)](https://xtermjs.org/)
 
-Gentoo Linux running in the browser with v86 and xterm.js.
+Gentoo Linux running in the browser with v86 and xterm.js
 
 WebGentoo is a static GitHub Pages project for booting a 32-bit Gentoo disk image in v86. It gives the browser a serial terminal, IndexedDB state storage, reset controls, and fullscreen support without a backend
 
@@ -15,12 +15,12 @@ WebGentoo is a static GitHub Pages project for booting a 32-bit Gentoo disk imag
 
 ## Features
 
-- Browser VM: Boots a Gentoo disk image with v86 and WebAssembly.
-- Terminal access: Connects xterm.js to the VM serial console.
-- Persistent state: Saves compatible VM snapshots in IndexedDB.
-- Reset control: Clears browser VM storage and starts from the clean image.
-- Fullscreen mode: Expands the VM shell with the browser fullscreen API.
-- Static hosting: Runs from GitHub Pages or any static file host.
+- Browser VM: Boots a Gentoo disk image with v86 and WebAssembly
+- Terminal access: Connects xterm.js to the VM serial console
+- Persistent state: Saves compatible VM snapshots in IndexedDB
+- Reset control: Clears browser VM storage and starts from the clean image
+- Fullscreen mode: Expands the VM shell with the browser fullscreen API
+- Static hosting: Runs from GitHub Pages or any static file host
 
 ## Requirements
 
@@ -31,18 +31,34 @@ WebGentoo is a static GitHub Pages project for booting a 32-bit Gentoo disk imag
 
 ## Build
 
-Copy pinned runtime assets and run project checks:
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run npm run vendor to download required files
+
+```bash
+npm run vendor
+```
+
+### Run npm run check to check project files
 
 ```bash
 npm run check
 ```
 
-The site loads `public/vendor/v86/v86.wasm`, `public/vendor/v86/libv86.mjs`, and the xterm.js files copied from npm packages
+### Run
+
+```bash
+npx http-server . -c-1 -p 4173
+```
 
 ## Image Setup
 
-The VM image is not committed to this repository. Build it locally, compress it, and upload it to a GitHub Release. See [Gentoo Image Setup](./docs/gentoo-image.md) and [GitHub Pages Setup](./docs/github-pages.md).
+The VM image is not committed to this repository. Its built by me locally and uploaded to the GitHub Releases and is downloaded automatically when the site is loaded
 
 ## License
 
-Released under the [MIT License](./LICENSE).
+Released under the [MIT License](LICENSE)
