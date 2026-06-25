@@ -76,13 +76,14 @@ export class GentooVm {
   }
 
   createDiskImage() {
+    const isCompressed = this.config.disk.url.endsWith(".zst") || this.config.disk.url.endsWith(".bz2");
     const image = {
       url: this.config.disk.url,
-      async: true,
+      async: !isCompressed,
       size: this.config.disk.size
     };
 
-    if (this.config.disk.useParts) {
+    if (this.config.disk.useParts && !isCompressed) {
       image.use_parts = true;
       image.fixed_chunk_size = this.config.disk.fixedChunkSize;
     }
