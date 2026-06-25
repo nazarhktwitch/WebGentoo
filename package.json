@@ -1,0 +1,46 @@
+{
+  "name": "webgentoo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gentoo Linux in the browser with v86",
+  "type": "module",
+  "scripts": {
+    "vendor": "node scripts/vendor-assets.mjs",
+    "check": "npm run vendor && node scripts/check-project.mjs",
+    "serve": "npx http-server . -c-1 -p 4173"
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "0.11.0",
+    "@xterm/xterm": "6.0.0",
+    "v86": "0.5.379"
+  },
+  "devDependencies": {
+    "http-server": "14.1.1"
+  },
+  "author": {
+    "name": "NazarHK",
+    "url": "https://github.com/nazarhktwitch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nazarhktwitch/WebGentoo.git"
+  },
+  "homepage": "https://nazarhktwitch.github.io/WebGentoo/",
+  "license": "MIT",
+  "keywords": [
+    "gentoo",
+    "linux",
+    "browser",
+    "v86",
+    "web",
+    "web-assembly",
+    "web-os",
+    "wasm",
+    "emulator",
+    "web-emulator",
+    "linux-emulator",
+    "linux-in-browser",
+    "gentoo-in-browser",
+    "web-gentoo"
+  ]
+}

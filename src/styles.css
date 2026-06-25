@@ -1,0 +1,215 @@
+:root {
+  color: #dce3e8;
+  background: #0d1114;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(180deg, rgba(32, 43, 48, 0.7), rgba(13, 17, 20, 0.2) 42%),
+    #0d1114;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.topbar,
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: rgba(15, 20, 23, 0.94);
+  border-color: rgba(220, 227, 232, 0.12);
+}
+
+.topbar {
+  border-bottom: 1px solid rgba(220, 227, 232, 0.12);
+}
+
+.statusbar {
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(220, 227, 232, 0.12);
+  color: #a9b4bd;
+  font-size: 0.83rem;
+}
+
+.brand {
+  min-width: 0;
+}
+
+.brand h1 {
+  margin: 0;
+  color: #f2f6f8;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.brand p {
+  margin: 0.12rem 0 0;
+  color: #a9b4bd;
+  font-size: 0.86rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.controls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(220, 227, 232, 0.18);
+  border-radius: 8px;
+  color: #edf3f6;
+  background: #1d252a;
+  cursor: pointer;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+  border-color: #9ed072;
+  outline: none;
+}
+
+.icon-button:disabled {
+  color: #6d7780;
+  cursor: not-allowed;
+}
+
+.vm-shell {
+  position: relative;
+  min-height: 0;
+  padding: 0.75rem;
+  background: #101317;
+}
+
+.terminal-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 24rem;
+  overflow: hidden;
+  border: 1px solid rgba(220, 227, 232, 0.14);
+  border-radius: 8px;
+  background: #101317;
+}
+
+.screen {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(8, 11, 13, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.loader[hidden] {
+  display: none;
+}
+
+.loader-box {
+  width: min(30rem, 100%);
+  padding: 1.25rem;
+  border: 1px solid rgba(220, 227, 232, 0.15);
+  border-radius: 8px;
+  background: #151b1f;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.loader-title,
+.loader-detail {
+  margin: 0;
+}
+
+.loader-title {
+  color: #f2f6f8;
+  font-weight: 700;
+}
+
+.loader-detail {
+  color: #a9b4bd;
+  font-size: 0.9rem;
+}
+
+.progress {
+  height: 0.5rem;
+  margin: 1rem 0 0.75rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #273239;
+}
+
+.progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #9ed072, #5eb7b7);
+  transition: width 160ms ease;
+}
+
+.xterm {
+  height: 100%;
+  padding: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .brand p {
+    max-width: calc(100vw - 10rem);
+  }
+
+  .vm-shell {
+    padding: 0.5rem;
+  }
+
+  .terminal-wrap {
+    min-height: 22rem;
+  }
+
+  .statusbar {
+    gap: 0.4rem;
+    padding-bottom: calc(0.85rem + env(safe-area-inset-bottom));
+  }
+
+  .statusbar span {
+    flex: 1 1 100%;
+  }
+}
