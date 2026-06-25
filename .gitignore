@@ -10,3 +10,4 @@ public/images/*.iso
 public/images/*.tar
 public/images/*.tar.gz
 public/images/*.tar.xz
+*.code-workspace
