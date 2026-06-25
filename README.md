@@ -37,16 +37,10 @@ WebGentoo is a static GitHub Pages project for booting a 32-bit Gentoo disk imag
 npm install
 ```
 
-### Run npm run vendor to download required files
+### Run vendor to download required files
 
 ```bash
 npm run vendor
-```
-
-### Run npm run check to check project files
-
-```bash
-npm run check
 ```
 
 ### Run
