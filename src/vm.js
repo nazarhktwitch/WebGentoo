@@ -116,7 +116,7 @@ export class GentooVm {
       this.bootText += char;
       this.terminal.write(char);
 
-      if (this.bootText.includes("login:") || this.bootText.includes("# ")) {
+      if (this.bootText.includes("login:") || this.bootText.includes("# ") || this.bootText.includes("grub> ")) {
         this.callbacks.onBooted();
       }
     });
