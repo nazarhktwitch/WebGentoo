@@ -112,8 +112,11 @@ async function bootVm({ clean = false } = {}) {
     terminal.focus();
     await vm.boot(savedState);
   } catch (error) {
+    const msg = error?.message || String(error) || "Unknown error";
     elements.statusText.textContent = "Boot failed";
-    writeNotice([`Boot failed: ${error.message}`]);
+    writeNotice([`Boot failed: ${msg}`]);
+    // Clear corrupted saved state so next boot starts fresh
+    try { await storage.del(vmConfig.stateKey); } catch (_) {}
   } finally {
     booting = false;
     elements.bootButton.disabled = false;
@@ -172,8 +175,9 @@ window.addEventListener("beforeunload", () => {
 });
 
 init().catch(error => {
+  const msg = error?.message || String(error) || "Unknown startup error";
   elements.storageStatus.textContent = "Storage: unavailable";
   elements.statusText.textContent = "Startup failed";
-  writeNotice([`Startup failed: ${error.message}`]);
-  setProgress("Startup failed", error.message, 100);
+  writeNotice([`Startup failed: ${msg}`]);
+  setProgress("Startup failed", msg, 100);
 });

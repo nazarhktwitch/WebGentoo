@@ -9,10 +9,13 @@ export class GentooVm {
     this.emulator = null;
     this.saveTimer = 0;
     this.bootText = "";
+    this.isBooted = false;
   }
 
   async boot(savedState) {
     await this.stop();
+    this.isBooted = false;
+    this.bootText = "";
     this.callbacks.onPhase("init", "Creating emulator", 18);
 
     this.emulator = new V86({
@@ -34,7 +37,7 @@ export class GentooVm {
 
     this.bindEvents();
     this.bindTerminal();
-    this.startSaving();
+    // Saving is started only after the system has fully booted (see markBooted)
   }
 
   async stop() {
@@ -60,7 +63,8 @@ export class GentooVm {
   }
 
   async saveState() {
-    if (!this.emulator) {
+    // Never save while still booting — a mid-boot state is always broken
+    if (!this.emulator || !this.isBooted) {
       return false;
     }
 
@@ -73,6 +77,13 @@ export class GentooVm {
     });
 
     return true;
+  }
+
+  markBooted() {
+    if (this.isBooted) return;
+    this.isBooted = true;
+    this.callbacks.onBooted();
+    this.startSaving();
   }
 
   createDiskImage() {
@@ -117,7 +128,7 @@ export class GentooVm {
       this.terminal.write(char);
 
       if (this.bootText.includes("login:") || this.bootText.includes("# ") || this.bootText.includes("grub> ")) {
-        this.callbacks.onBooted();
+        this.markBooted();
       }
     });
   }
@@ -131,6 +142,7 @@ export class GentooVm {
   }
 
   startSaving() {
+    window.clearInterval(this.saveTimer);
     this.saveTimer = window.setInterval(async () => {
       try {
         const saved = await this.saveState();
