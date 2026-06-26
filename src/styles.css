@@ -27,6 +27,7 @@ button {
   grid-template-rows: auto minmax(0, 1fr) auto;
   min-height: 100vh;
   min-height: 100dvh;
+  position: relative;
 }
 
 .topbar,
@@ -42,6 +43,8 @@ button {
 
 .topbar {
   border-bottom: 1px solid rgba(220, 227, 232, 0.12);
+  position: relative;
+  z-index: 10;
 }
 
 .statusbar {
@@ -128,13 +131,17 @@ button {
 }
 
 .loader {
-  position: fixed;
+  /* Cover only the vm-shell area, not the topbar or statusbar */
+  position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
   padding: 1rem;
   background: rgba(8, 11, 13, 0.78);
   backdrop-filter: blur(8px);
+  z-index: 5;
+  /* Position below the topbar: pushed down by topbar height */
+  top: 0;
 }
 
 .loader[hidden] {

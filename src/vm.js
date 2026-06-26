@@ -121,6 +121,8 @@ export class GentooVm {
 
     this.emulator.add_listener("emulator-started", () => {
       this.callbacks.onPhase("boot", "Gentoo is booting", 94);
+      // Reveal the terminal immediately so the user can see/interact with GRUB/Linux
+      this.markBooted();
     });
 
     this.emulator.add_listener("serial0-output-byte", byte => {
