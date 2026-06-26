@@ -13,6 +13,9 @@ WebGentoo is a static GitHub Pages project for booting a 32-bit Gentoo disk imag
 
 [Live Demo](https://nazarhktwitch.github.io/WebGentoo/)
 
+Login: root
+Password: password
+
 ## Features
 
 - Browser VM: Boots a Gentoo disk image with v86 and WebAssembly
