@@ -45,7 +45,8 @@ export const vmConfig = {
   initrd: {
     url: "https://huggingface.co/datasets/NazarHK/WebGentooImage/resolve/main/initramfs-6.18.35-gentoo-dist-bin.img"
   },
-  cmdline: "root=/dev/sda1 ro console=ttyS0 fsck.mode=skip"
+  cmdline: "root=/dev/sda1 ro console=ttyS0 fsck.mode=skip",
+  networkRelay: "wss://relay.widgetry.org/"
 };
 
 export function isImageConfigured(config = vmConfig) {

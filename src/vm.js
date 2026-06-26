@@ -33,6 +33,7 @@ export class GentooVm {
       bzimage: { url: this.config.kernel.url },
       initrd: { url: this.config.initrd.url },
       cmdline: this.config.cmdline,
+      network_relay_url: this.config.networkRelay,
       autostart: true,
       fastboot: true,
       disable_mouse: true,
