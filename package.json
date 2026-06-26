@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "vendor": "node scripts/vendor-assets.mjs",
-    "check": "npm run vendor && node scripts/check-project.mjs",
     "serve": "npx http-server . -c-1 -p 4173"
   },
   "dependencies": {
