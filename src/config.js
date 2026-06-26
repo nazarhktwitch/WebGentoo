@@ -26,7 +26,7 @@ export const vmConfig = {
   imageMetaKey: "gentoo-image-meta",
   stateSaveMs: 45000,
   bootWaitMs: 12000,
-  memorySize: 256 * 1024 * 1024,
+  memorySize: 512 * 1024 * 1024,
   vgaMemorySize: 16 * 1024 * 1024,
   paths: {
     wasm: "./public/vendor/v86/v86.wasm",
@@ -38,7 +38,14 @@ export const vmConfig = {
     size: readNumber("size", Number(globalThis.GENTOO_IMAGE_SIZE) || releaseImageSize),
     useParts: readBoolean("parts", false),
     fixedChunkSize: readNumber("chunk", 2 * 1024 * 1024)
-  }
+  },
+  kernel: {
+    url: "https://huggingface.co/datasets/NazarHK/WebGentooImage/resolve/main/vmlinuz-6.18.35-gentoo-dist-bin"
+  },
+  initrd: {
+    url: "https://huggingface.co/datasets/NazarHK/WebGentooImage/resolve/main/initramfs-6.18.35-gentoo-dist-bin.img"
+  },
+  cmdline: "root=/dev/sda1 rw console=ttyS0"
 };
 
 export function isImageConfigured(config = vmConfig) {

@@ -30,6 +30,9 @@ export class GentooVm {
       screen: {
         container: document.getElementById("screenContainer")
       },
+      bzimage: { url: this.config.kernel.url },
+      initrd: { url: this.config.initrd.url },
+      cmdline: this.config.cmdline,
       autostart: true,
       fastboot: true,
       disable_mouse: true,
