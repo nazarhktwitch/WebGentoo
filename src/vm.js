@@ -10,6 +10,7 @@ export class GentooVm {
     this.saveTimer = 0;
     this.bootText = "";
     this.isBooted = false;
+    this._terminalDataDisposable = null;
   }
 
   async boot(savedState) {
@@ -134,7 +135,13 @@ export class GentooVm {
   }
 
   bindTerminal() {
-    this.terminal.onData(data => {
+    // Dispose previous listener to avoid stacking onData handlers
+    // across multiple boot() calls (would cause double-input)
+    if (this._terminalDataDisposable) {
+      this._terminalDataDisposable.dispose();
+      this._terminalDataDisposable = null;
+    }
+    this._terminalDataDisposable = this.terminal.onData(data => {
       if (this.emulator) {
         this.emulator.serial0_send(data);
       }
