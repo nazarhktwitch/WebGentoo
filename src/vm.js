@@ -68,7 +68,7 @@ export class GentooVm {
   }
 
   async saveState() {
-    // Never save while still booting — a mid-boot state is always broken
+    // Never save while still booting, a mid-boot state is always broken
     if (!this.emulator || !this.isBooted) {
       return false;
     }
